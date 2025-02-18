@@ -1,0 +1,84 @@
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .cms-header, .cms-footer {
+            height: 48px;
+            background: #333;
+            color: white;
+            text-align: center;
+            line-height: 48px;
+            font-weight: bold;
+        }
+        
+        .cms-body, 
+        .cms-body .widget.nested-widget-parent {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: repeat(4, 3fr);
+            grid-template-rows: repeat(4, 3fr);
+            grid-auto-rows: minmax(100px, auto);
+            gap: 1rem;
+        }
+        .cms-body {
+            padding: 1rem;
+            padding-bottom: 3rem;
+			height: calc(100vh - 3rem);
+        }
+        
+        .widget {
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+        
+        /**Temporary Styles**/
+        .widget.widget-child {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.7)), 
+                        url('placeholder.png') !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            border: 1px solid #ccc;
+        }
+		
+		.cms-dropdown {
+			gap: 8px; 
+            height: 100%;
+		}
+		.cms-dropdown .form-select {
+			height: 32px; 
+            padding: 2px 8px;
+            min-width: 240px;
+		}
+
+        .cms-header { height: 48px;}
+
+/* Default Footer */
+.cms-footer {
+    position: fixed;  /* Prevents affecting body layout */
+    bottom: 0;
+    width: 100%;
+    height: 100%; /* Always at max height */
+    background-color: #333;
+    color: white;
+    z-index: 10;
+    max-height: 32px; /* Start in collapsed state */
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+/* Expanded Footer */
+.cms-footer.expanded {
+    max-height: 160px; /* Expands smoothly */
+}
+
+        .cms-footer .expanded { height: 160px; position: absolute; bottom: 0; width: 100%; }
+        .cms-footer .btn-toggle { color: #4A90E2; }
