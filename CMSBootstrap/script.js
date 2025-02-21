@@ -10,7 +10,7 @@ const widgetData = [
 				signature: "FPW",
 				description: "This widget occupies the entire grid.",
 				background: "#ffcc00",
-				class: "full",
+				width_type: "full",
 				order: 1,
 			},
 		],
@@ -22,7 +22,7 @@ const widgetData = [
 				signature: "",
 				description: "Parent Widget with Nested Widgets",
 				background: "#f4a261",
-				class: "three-fourth",
+				width_type: "three-fourth",
 				order: 1,
 				"nested-widgets": [
 					{
@@ -30,7 +30,7 @@ const widgetData = [
 						signature: "A1",
 						description: "Single widget inside A",
 						background: "#f28482",
-						class: "half",
+						width_type: "half",
 						order: 1,
 					},
 					{
@@ -38,7 +38,7 @@ const widgetData = [
 						signature: "A2",
 						description: "Single widget inside A",
 						background: "#84a59d",
-						class: "half",
+						width_type: "half",
 						order: 2,
 					},
 					{
@@ -46,42 +46,42 @@ const widgetData = [
 						signature: "",
 						description: "Nested widget inside A",
 						background: "#6d597a",
-						class: "half",
+						width_type: "half",
 						order: 3,
 						"nested-widgets": [
 							{
 								name: "AX-1",
 								signature: "AX1",
 								background: "#34495e",
-								class: "half",
+								width_type: "half",
 								order: 1,
 							},
 							{
 								name: "AX-2",
 								signature: "AX2",
 								background: "#16a085",
-								class: "half",
+								width_type: "half",
 								order: 2,
 							},
 							{
 								name: "AX-3",
 								signature: "AX3",
 								background: "#34495e",
-								class: "full",
+								width_type: "full",
 								order: 3,
 							},
 							{
 								name: "AX-4",
 								signature: "AX4",
 								background: "#16a085",
-								class: "half",
+								width_type: "half",
 								order: 4,
 							},
 							{
 								name: "AX-5",
 								signature: "AX5",
 								background: "#34495e",
-								class: "half",
+								width_type: "half",
 								order: 5,
 							},
 						],
@@ -90,7 +90,7 @@ const widgetData = [
 						name: "A-4",
 						signature: "A4",
 						description: "Single widget inside A",
-						class: "full",
+						width_type: "full",
 						order: 4,
 					},
 				],
@@ -100,28 +100,28 @@ const widgetData = [
 				signature: "B",
 				description: "Another parent widget",
 				background: "#a4a284",
-				class: "one-fourth",
+				width_type: "one-fourth",
 				order: 2,
 				"nested-widgets": [
 					{
 						name: "BX-3",
 						signature: "BX3",
 						background: "#f449fe",
-						class: "full",
+						width_type: "full",
 						order: 1,
 					},
 					{
 						name: "BX-4",
 						signature: "BX4",
 						background: "#16a085",
-						class: "full",
+						width_type: "full",
 						order: 2,
 					},
 					{
 						name: "BX-5",
 						signature: "BX5",
 						background: "#34495e",
-						class: "full",
+						width_type: "full",
 						order: 3,
 					},
 				],
@@ -156,14 +156,14 @@ function getColumnClass(widgetClass) {
   switch (widgetClass) {
       case "full": return "col-12";
       case "half": return "col-lg-6 col-sm-12";
-      case "one-fourth": return "col-lg-3 col-sm-6 col-xs-12";
+      case "one-fourth": return "col-lg-3 col-sm-12 col-xs-12";
       case "three-fourth": return "col-lg-9 col-sm-12";
-      default: return "col-12";
+      default: return "col-3";
   }
 }
 
 function createWidgetElement(widget) {
-  const colClass = getColumnClass(widget.class);
+  const colClass = getColumnClass(widget.width_type);
   const div = document.createElement("div");
   div.className = `${colClass} widget`;
   div.style.background = widget.background || "#ccc";
